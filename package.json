@@ -1,0 +1,26 @@
+{
+  "name": "beeprint",
+  "version": "1.0.0",
+  "description": "Beeprint is a tool for printing numbers to stdout as they would be displayed on an LCD screen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taratatach/beeprint.git"
+  },
+  "keywords": [
+    "CLI",
+    "LCD",
+    "print",
+    "BeeBuzziness"
+  ],
+  "author": "Erwan Guyader",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/taratatach/beeprint/issues"
+  },
+  "homepage": "https://github.com/taratatach/beeprint#readme",
+  "dependencies": {}
+}
