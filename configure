@@ -1,0 +1,47 @@
+#!/bin/sh
+
+node=false
+error=false
+
+find() {
+  executable=$1
+
+  printf "Looking for $executable executable..."
+
+  if [ -x "$(command -v $executable)" ]; then
+    printf "OK\n"
+  else
+    printf "NOK\n"
+    exit 1
+  fi
+}
+
+use_makefile() {
+  makefile=$1
+
+  cp $makefile Makefile
+}
+
+printf "Configuring build dependencies...\n"
+
+while getopts ":N" opt; do
+  case $opt in
+    N)
+      printf "Asked to use Node.js\n"
+      node=true
+      ;;
+    \?)
+      printf "Invalid otpion: -$OPTARG...Ignoring\n"
+      ;;
+    esac
+done
+
+if [ $node = true ]; then
+  find node
+  find npm
+  use_makefile Node_Makefile.in
+else
+  printf "Using Docker\n"
+  find docker
+  use_makefile Docker_Makefile.in
+fi

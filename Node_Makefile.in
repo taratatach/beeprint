@@ -1,0 +1,13 @@
+all: index.js
+
+index.js: src/*.js
+	npm install -g yarn
+	yarn install
+	chmod +x index.js
+
+install: index.js
+	yarn link
+
+.PHONY: test
+test:
+	yarn test
