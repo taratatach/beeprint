@@ -12,4 +12,18 @@ class InvalidArgumentError extends Error {
   }
 }
 
-module.exports = { InvalidArgumentError };
+class ParserError extends Error {
+  constructor(c = '', ...params) {
+    super(...params);
+
+    this.name = 'ParserError';
+    this.character = c;
+    this.message = `invalid character \`${this.character}\``;
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, InvalidArgumentError);
+    }
+  }
+}
+
+module.exports = { InvalidArgumentError, ParserError };
